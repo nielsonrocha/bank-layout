@@ -10,7 +10,9 @@ Projeto para geração e leitura de arquivos bancários
   
 ```java
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
@@ -50,6 +52,8 @@ public class LayoutEDOTest {
 		header.setDataCredito(new Date());
 		header.setNumeroContrato("987");
 		header.setNumeroRemessa("123");
+		
+		List<Destinatario> destinatarios = new ArrayList<>();
 
 		Destinatario dest = new Destinatario();
 		dest.setAgencia("0528");
@@ -63,12 +67,8 @@ public class LayoutEDOTest {
 		dest.getDadosDocumento().add(new DadosDocumento("0082142000", 3, "LIQUIDO        700,00", 0));
 
 		dest.setQuantidadeLinhas(dest.getDadosDocumento().size());
-
-		out.write(header);
-		out.write(dest);
-		dest.getDadosDocumento().forEach(d -> {
-			out.write(d);
-		});
+		
+		destinatarios.add(dest);
 
 		dest = new Destinatario();
 		dest.setAgencia("1234");
@@ -82,14 +82,23 @@ public class LayoutEDOTest {
 		dest.getDadosDocumento().add(new DadosDocumento("0081032000", 3, "LIQUIDO      1.100,00", 0));
 
 		dest.setQuantidadeLinhas(dest.getDadosDocumento().size());
+		
+		destinatarios.add(dest);
+		
+		// gerando arquivo
+		out.write(header); // gravar header
+		
+		destinatarios.forEach(destinatario -> {
+			
+			out.write(destinatario); // gravar destinatario
+			destinatario.getDadosDocumento().forEach(d -> {
+				out.write(d); // gravar detalhe do destinatario
+			});
 
-		out.write(dest);
-		dest.getDadosDocumento().forEach(d -> {
-			out.write(d);
 		});
 
 		Trailler trailler = new Trailler();
-		trailler.setQuantidadeDestinatario(2);
+		trailler.setQuantidadeDestinatario(26353);
 
 		out.write(trailler);
 
@@ -97,5 +106,6 @@ public class LayoutEDOTest {
 		out.close();
 	}
 }
+
 
 ```
