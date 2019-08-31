@@ -89,7 +89,7 @@ public class LayoutEDOTest {
 		});
 
 		Trailler trailler = new Trailler();
-		trailler.setQuantidadeDestinatario(26353);
+		trailler.setQuantidadeDestinatario(2);
 
 		out.write(trailler);
 
