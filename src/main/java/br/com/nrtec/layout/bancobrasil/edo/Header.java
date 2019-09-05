@@ -34,7 +34,7 @@ public class Header implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * prefixo da agência do BB, sem DV
+	 * prefixo da agÃªncia do BB, sem DV
 	 */
 	@Field(at=23, length=4, padding = AsciiConstants.ZERO, align = Align.RIGHT )
 	private String agenciaEmpresa;
@@ -46,13 +46,13 @@ public class Header implements Serializable {
 	private String contaCorrenteEmpresa;
 	
 	/**
-	 * número do contrato, atribuído pelo EDO 
+	 * nÃºmero do contrato, atribuÃ­do pelo EDO 
 	 */
 	@Field(at=44, length=12, padding = AsciiConstants.ZERO, align = Align.RIGHT )
 	private String numeroContrato;
 	
 	/**
-	 * número seqüencial da remessa 
+	 * nÃºmero seqÃ¼encial da remessa 
 	 */
 	@Field(at=56, length=6, padding = AsciiConstants.ZERO, align = Align.RIGHT)
 	private String numeroRemessa;
@@ -64,19 +64,19 @@ public class Header implements Serializable {
 	private String ano;
 	
 	/**
-	 * mês a que se refere o documento 
+	 * mÃªs a que se refere o documento 
 	 */
 	@Field(at=76, length=2, padding = AsciiConstants.ZERO, align = Align.RIGHT)
 	private String mes;
 	
 	/**
-	 * número seqüencial de extraordinariedade 
+	 * nÃºmero seqÃ¼encial de extraordinariedade 
 	 */
 	@Field(at=78, length=2, padding = AsciiConstants.ZERO)
 	private String remessaExtra = "0";
 	
 	/**
-	 * data (ddmmaaaa) referente ao crédito 
+	 * data (ddmmaaaa) referente ao crÃ©dito 
 	 */
 	@Field(at=80, length=8, format="ddMMyyyy")
 	private Date dataCredito;
