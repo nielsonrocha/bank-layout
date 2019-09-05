@@ -9,6 +9,7 @@ import org.beanio.builder.StreamBuilder;
 
 import br.com.nrtec.layout.cef.siacc.DebitoCredito;
 import br.com.nrtec.layout.cef.siacc.Header;
+import br.com.nrtec.layout.cef.siacc.Trailler;
 
 
 public class LayoutSIACCTest {
@@ -20,7 +21,8 @@ public class LayoutSIACCTest {
 		StreamBuilder builderTxt = new StreamBuilder("layoutSIACC").format("fixedlength")
 				.parser(new FixedLengthParserBuilder())
 				.addRecord(br.com.nrtec.layout.cef.siacc.Header.class)
-				.addRecord(br.com.nrtec.layout.cef.siacc.DebitoCredito.class);
+				.addRecord(br.com.nrtec.layout.cef.siacc.DebitoCredito.class)
+				.addRecord(br.com.nrtec.layout.cef.siacc.Trailler.class);
 				
 		
 		factory.define(builderTxt);
@@ -31,12 +33,12 @@ public class LayoutSIACCTest {
 				.agencia("1405")
 				.ambienteCliente("P")
 				.amibenteBanco("P")
-				.codigoConvenio("339390")
+				.codigoConvenio("123456")
 				.codigoRemessa(1)
 				.conta("30")
 				.dataMovimento(new Date())
 				.dvConta("1")
-				.nomeEmpresa("SITRAJUFE MA")
+				.nomeEmpresa("EMPRESA TESTE")
 				.numeroSequencialArquivo("1")
 				.operacao("003")
 				.build();
@@ -50,7 +52,7 @@ public class LayoutSIACCTest {
 				.conta("8333")
 				.dvConta("3")
 				.vencimento(new Date())
-				.valorDebito(BigDecimal.valueOf(1234.46 * 100))
+				.valorDebito(BigDecimal.ZERO)
 				.numeroAgendamento(1)
 				.numeroSequencial(1)
 				.operacao("001")
@@ -58,6 +60,14 @@ public class LayoutSIACCTest {
 				.build();
 
 		out.write(debito);
+		
+		Trailler t = Trailler.builder()
+				.numeroSequencial(2)
+				.totalRegistros(1)
+				.valorTotal(BigDecimal.ZERO)
+				.build();
+		
+		out.write(t);
 		
 		out.flush();
 		out.close();
