@@ -16,7 +16,7 @@ import br.com.nrtec.layout.bancobrasil.edo.Trailler;
 
 public class LayoutEDOTest {
 
-	public static void main(String[] args) throws Exception {
+	public void testeEDO() {
 
 		StreamFactory factory = StreamFactory.newInstance();
 

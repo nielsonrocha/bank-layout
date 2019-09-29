@@ -9,7 +9,6 @@ import org.beanio.annotation.Record;
 import org.beanio.builder.Align;
 
 import br.com.nrtec.layout.util.AsciiConstants;
-import lombok.Builder;
 import lombok.Data;
 
 
@@ -18,7 +17,6 @@ import lombok.Data;
  * @author Nielson Rocha
  */
 @Data
-@Builder
 @Record(minOccurs=1, maxOccurs=1)
 @Fields({
     @Field(at=0, name="codigoRegistro", length = 1, rid = true, literal="A"),
@@ -26,9 +24,9 @@ import lombok.Data;
     @Field(at=8, name="tipoCompromisso", length = 2, literal="11"),
     @Field(at=10, name="numeroCompromisso", length = 4, literal="0001"),
     @Field(at=14, name="brancos", length = 8, padding = AsciiConstants.WHITE_SPACE),
-    @Field(at=45, name="nomeBanco", length = 20, literal="CAIXA ECONOMICA FEDE", padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT),
+    @Field(at=45, name="nomeBanco", length = 20, literal="CAIXA", padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT),
     @Field(at=79, name="versaoLayout", length = 2, literal="04"),
-    @Field(at=81, name="identServico", length = 17, literal="DEB AUTOMAT", padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT),
+    @Field(at=81, name="identServico", length = 17, literal="DEBITO AUTOMATICO", padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT),
     @Field(at=116, name="filler", length = 27, padding = AsciiConstants.WHITE_SPACE),
     @Field(at=143, name="sequencialRegistro", literal = "000000", length = 6),
     @Field(at=149, name="fillerFuturo", length = 1, padding = AsciiConstants.WHITE_SPACE),

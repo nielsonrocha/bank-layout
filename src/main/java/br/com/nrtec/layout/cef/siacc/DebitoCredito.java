@@ -10,15 +10,14 @@ import org.beanio.annotation.Record;
 import org.beanio.builder.Align;
 
 import br.com.nrtec.layout.util.AsciiConstants;
-import lombok.Builder;
 import lombok.Data;
 
 /**
  *
  * @author Nielson Rocha
  */
-@Data @Builder
-@Record(minOccurs=1, maxOccurs=-1)
+@Data
+@Record(minOccurs=-1, maxOccurs=-1)
 @Fields({
 	@Field(at=0, name="codigoRegistro", length = 1, literal = "E", rid = true),
 	@Field(at=135, name="brancos", length = 2, padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT),
@@ -28,7 +27,7 @@ public class DebitoCredito implements  Serializable{
     
 	private static final long serialVersionUID = 1L;
 	
-	@Field(at=1, length = 20, padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT)
+	@Field(at=1, length = 25, padding = AsciiConstants.WHITE_SPACE, align = Align.LEFT)
 	private String cliente;
     
 	@Field(at=26, length = 4, padding = AsciiConstants.ZERO, align = Align.RIGHT)

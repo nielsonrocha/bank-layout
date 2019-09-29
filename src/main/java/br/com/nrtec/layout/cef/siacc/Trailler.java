@@ -9,7 +9,6 @@ import org.beanio.annotation.Record;
 import org.beanio.builder.Align;
 
 import br.com.nrtec.layout.util.AsciiConstants;
-import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -17,7 +16,6 @@ import lombok.Data;
  * @author Nielson Rocha
  */
 @Data
-@Builder
 @Record(minOccurs=1, maxOccurs=1)
 @Fields({
     @Field(at=0, name="codigoRegistro", length = 1, rid = true, literal="Z"),
