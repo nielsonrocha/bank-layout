@@ -1,7 +1,8 @@
 # Bank Layout
 
 
-Projeto para geração e leitura de arquivos bancários
+Projeto para geração e leitura de arquivos bancários de remessa e retoro
+Atualmente funcionando para Layoyt EDO Banco do Brasil e Caixa SIACC 150
 
 
 # Exemplos
